@@ -1,0 +1,269 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .custom-hero--{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .custom-hero__image-wrapper, .custom-hero__content-wrapper {
+    width: 100%;
+  }
+
+  .custom-hero__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .custom-hero__content-wrapper {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .custom-hero__subheading {
+    color: {{ section.settings.subheading_color }};
+    margin-bottom: 15px;
+    font-family: var(--font-paragraph--family);
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 2.4px;
+text-transform: uppercase;
+
+  }
+
+  .custom-hero__heading {
+    color: {{ section.settings.text_color }};
+
+    font-family: var(--font-h4--family);
+font-size: 64px !important;
+font-style: normal;
+font-weight: 400;
+line-height: normal !important;
+letter-spacing: -1.28px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+
+
+  }
+
+  .custom-hero__text {
+
+    margin-bottom: 30px;
+    color: {{ section.settings.text_color }};
+
+
+    font-family: var(--font-paragraph--family);
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 30px;
+
+  }
+
+  .custom-hero__button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    width: fit-content;
+border-radius:5px;
+text-align: center;
+    font-family: var(--font-paragraph--family);
+font-size: 16px;
+font-style: normal;
+font-weight: 600;
+line-height: 24px; /* 150% */
+letter-spacing: 1.6px;
+text-transform: uppercase;
+
+
+  }
+
+  /* Desktop View Styling */
+  @media screen and (min-width: 750px) {
+    .custom-hero--{{ section.id }} {
+      flex-direction: row{% if section.settings.layout == 'text_first' %}-reverse{% endif %};
+      align-items: stretch;
+      min-height: 500px;
+    }
+    
+    .custom-hero__image-wrapper, .custom-hero__content-wrapper {
+      width: 50%;
+    }
+
+    .custom-hero__content-wrapper {
+      padding: 60px 3rem;
+    }
+
+    .custom-hero__heading {
+      font-size: 56px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-hero--{{ section.id }} section-{{ section.id }}-padding">
+  {%- if section.settings.image != blank -%}
+    <div class="custom-hero__image-wrapper">
+      <img src="{{ section.settings.image | image_url: width: 1500 }}" 
+           alt="{{ section.settings.image.alt }}" 
+           class="custom-hero__image"
+           loading="lazy">
+    </div>
+  {%- else -%}
+    <div class="custom-hero__image-wrapper" style="background: #ccc; min-height: 300px;"></div>
+  {%- endif -%}
+
+  <div class="custom-hero__content-wrapper">
+    {% if section.settings.subheading != blank %}
+      <p class="custom-hero__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+    
+    {% if section.settings.heading != blank %}
+      <h2 class="custom-hero__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="custom-hero__text">{{ section.settings.text }}</div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="custom-hero__button">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Hero Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "image_first", "label": "Image First" },
+        { "value": "text_first", "label": "Text First" }
+      ],
+      "default": "image_first",
+      "label": "Desktop Layout"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "FAMILY-OWNED FINE JEWELLERY. CRAFTED SINCE 1981."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Solid gold, made to outlive trends."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Every piece is solid 9ct, 14ct, or 18ct gold and ships with a certificate of authenticity.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "SHOP THE COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFF9F2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#A68153"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#A68153"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Section"
+    }
+  ]
+}
+{% endschema %}
