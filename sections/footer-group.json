@@ -56,11 +56,11 @@
             "text_LWt8Pz": {
               "type": "text",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
-                "width": "100%",
-                "max_width": "normal",
+                "text": "<p>$50 off your first order over $300 — plus a free jewellery care guide.</p>",
+                "width": "fit-content",
+                "max_width": "none",
                 "alignment": "left",
-                "type_preset": "h4",
+                "type_preset": "paragraph",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -80,6 +80,7 @@
             },
             "text_f9CFLH": {
               "type": "text",
+              "disabled": true,
               "settings": {
                 "text": "<p>Get exclusive deals and early access to new products.</p>",
                 "width": "100%",
@@ -115,9 +116,9 @@
             "width": "fill",
             "custom_width": 100,
             "inherit_color_scheme": true,
+            "color_scheme": "",
             "heading": "",
             "heading_preset": "h3",
-            "color_scheme": "",
             "border_style": "all",
             "border_width": 1,
             "border_radius": 100,
@@ -143,9 +144,27 @@
       "settings": {
         "section_width": "page-width",
         "gap": 20,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-6f6fbbc7-6182-44af-a336-d8c208844929",
         "padding-block-start": 30,
         "padding-block-end": 30
+      }
+    },
+    "custom_footer_dRE948": {
+      "type": "custom-footer",
+      "name": "Custom Footer",
+      "settings": {
+        "logo": "shopify://shop_images/image_344.png",
+        "text": "<p>More than jewellery, Amaral creates golden <br/>memories to last a lifetime.</p>",
+        "quick_title": "Quick Links",
+        "quick_menu": "quick-links",
+        "policy_title": "Policies",
+        "policy_menu": "policies",
+        "contact_title": "Contact Us",
+        "phone": "+1 866-986-7385",
+        "email": "info@amaraljewels.com",
+        "facebook": "#",
+        "instagram": "#",
+        "copyright": "© 2026, Amaral Jewels Powered by Dash Optimiza"
       }
     },
     "footer_utilities_jLGE8U": {
@@ -193,6 +212,7 @@
         "footer_policy_list_VCdnpa",
         "social_links_Ew63Kq"
       ],
+      "disabled": true,
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",
@@ -206,6 +226,7 @@
   },
   "order": [
     "footer_m9NzUG",
+    "custom_footer_dRE948",
     "footer_utilities_jLGE8U"
   ]
 }

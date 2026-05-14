@@ -4245,3 +4245,74 @@ product-recommendations:has([data-has-recommendations='false']) {
   padding-top:16px;
   padding-bottom:16px
 }
+.shopify-section-group-footer-group.section-wrapper{
+    width: 94%;
+    margin: 100px auto -50px;
+    z-index: 1;
+}
+.shopify-section-group-footer-group.section-wrapper .text-block p{
+color: #FFF;
+font-family: var(--font-h4--family);
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.shopify-section-group-footer-group.section-wrapper .email-signup__input-group{
+  border-radius:0px;
+      background: #fff;
+      width: 75%;
+      margin-top:15px;
+}
+.shopify-section-group-footer-group.section-wrapper .email-signup__input{
+  background: url("https://cdn.shopify.com/s/files/1/0604/6888/7635/files/Vector.png?v=1778732956") 25px 22px no-repeat;
+  background-size: 20px;
+      padding-left: 60px;
+      color: #353535;
+font-family: var(--font-paragraph--family);
+font-size: 14px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.shopify-section-group-footer-group.section-wrapper .email-signup__input
+
+
+.shopify-section-group-footer-group.section-wrapper .email-signup__input::placeholder{
+      color: #353535;
+  opacity: 1;
+}
+
+/* Chrome, Safari */
+.shopify-section-group-footer-group.section-wrapper .email-signup__input::-webkit-input-placeholder{
+      color: #353535;
+}
+
+/* Firefox */
+.shopify-section-group-footer-group.section-wrapper .email-signup__input::-moz-placeholder{
+      color: #353535;
+  opacity: 1;
+}
+
+/* IE */
+.shopify-section-group-footer-group.section-wrapper .email-signup__input:-ms-input-placeholder {
+      color: #353535;
+}
+
+.shopify-section-group-footer-group.section-wrapper .email-signup__form
+ {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+featured-product-information .group-block-content .contents .text-block p{
+  color: #181818;
+font-family: var(--font-paragraph--family);
+font-size: 48px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+}

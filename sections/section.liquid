@@ -4,7 +4,7 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% render 'section', section: section, children: children %}
+{% render 'section', section: section, class: 'custom-class', children: children %}
 
 {% schema %}
 {
@@ -418,8 +418,12 @@
       "step": 1,
       "unit": "px",
       "default": 0
-    }
-  ],
+    },
+          {
+      "type": "text",
+      "id": "section_class",
+      "label": "Section Custom Class"
+    }],
   "presets": [
     {
       "name": "t:names.custom_section",

@@ -269,7 +269,7 @@
       </button>
 
       <div
-        class="localization-wrapper {{ section.settings.localization_position }}-bound color-{{ settings.popover_color_scheme }}"
+        class="{{ section.settings.custom_class }} localization-wrapper {{ section.settings.localization_position }}-bound color-{{ settings.popover_color_scheme }}"
         hidden
         ref="panel"
       >
@@ -1381,8 +1381,13 @@
         {
           "value": "full-width",
           "label": "t:options.full"
-        }
-      ]
+        },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom CSS class",
+      "default": ""
+    }]
     },
     {
       "type": "select",

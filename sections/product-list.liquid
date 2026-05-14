@@ -4,7 +4,7 @@
   assign max_items = section.settings.max_products
 %}
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="{{ section.settings.section_class }} section-background color-{{ section.settings.color_scheme }}"></div>
 <div
   data-testid="product-list"
   class="
@@ -103,6 +103,11 @@
       "type": "collection",
       "id": "collection",
       "label": "t:settings.collection"
+    },
+          {
+      "type": "text",
+      "id": "section_class",
+      "label": "Section Custom Class"
     },
     {
       "type": "select",
