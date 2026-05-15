@@ -614,7 +614,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Frequently asked questions</h2>",
+            "text": "<h3>Common Enquiries</h3>",
             "width": "100%",
             "max_width": "none",
             "alignment": "center",
