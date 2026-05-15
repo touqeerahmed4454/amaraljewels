@@ -1,0 +1,175 @@
+<style>
+  .unboxing-wrapper {
+    padding: 80px 3rem;
+    text-align: center;
+  }
+  .unboxing-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .gift-icon-wrapper {
+    margin-bottom: 20px;
+    color: #a37e52; /* Gold color */
+  }
+  .gift-icon-wrapper svg {
+    width: 40px; height: auto;
+    margin:auto;
+  }
+  .unboxing-title {
+font-family: var(--font-h4--family);
+font-weight: 500;
+font-style: Medium;
+font-size: 50px;
+line-height: 100%;
+letter-spacing: 0%;
+text-align: center;
+
+    margin: 0 0 15px;
+    color: #1a1a1a;
+  }
+  .unboxing-description {
+    max-width: 650px;
+    margin: 0 auto 0px;
+padding-bottom:50px;
+  font-family: var(--font-paragraph--family);
+font-weight: 400;
+font-size: 18px;
+line-height: 30px;
+letter-spacing: 0px;
+text-align: center;
+vertical-align: middle;
+
+  }
+  .unboxing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .unboxing-card {
+    border: 1px solid #f2f2f2; /* Light border around card */
+    padding: 30px 15px;
+    background: #fff;
+  }
+  .card-label {
+    display: block;
+  font-family: var(--font-paragraph--family);
+font-weight: 600;
+color:#A47944;
+font-size: 12px;
+line-height: 16.8px;
+letter-spacing: 1.8px;
+text-align: center;
+vertical-align: middle;
+
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+  .card-image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners */
+  }
+
+  /* MOBILE DESIGN */
+  @media (max-width: 767px) {
+    .unboxing-wrapper {
+      padding: 50px 15px;
+    }
+    .unboxing-title {
+      font-size: 32px;
+    }
+    .unboxing-grid {
+      grid-template-columns: 1fr; /* Stacked layout */
+      gap: 20px;
+    }
+    .unboxing-card {
+      padding: 20px 10px;
+    }
+  }
+</style>
+<div class="unboxing-section-{{ section.id }} unboxing-wrapper" style="background-color: {{ section.settings.bg_color }};">
+  <div class="unboxing-container">
+    
+    <div class="unboxing-header">
+      <div class="gift-icon-wrapper">
+       <svg width="34" height="36" viewBox="0 0 34 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.89065 36V16.3888H0V6.99905H9.25368C9.00131 6.70569 8.82981 6.37533 8.73918 6.00797C8.64856 5.64061 8.60325 5.25489 8.60325 4.8508C8.60325 3.50335 9.07164 2.35803 10.0084 1.41482C10.9452 0.471606 12.0828 0 13.421 0C14.107 0 14.7425 0.144949 15.3275 0.434847C15.9125 0.724744 16.4356 1.11224 16.8968 1.59732C17.3579 1.09376 17.881 0.701646 18.466 0.420988C19.051 0.140329 19.6865 0 20.3725 0C21.7107 0 22.8483 0.471606 23.7851 1.41482C24.7219 2.35803 25.1903 3.50335 25.1903 4.8508C25.1903 5.25042 25.1404 5.6304 25.0406 5.99076C24.9408 6.35111 24.7738 6.68721 24.5398 6.99905H34V16.3888H31.1094V36H2.89065ZM20.3725 2.70254C19.7737 2.70254 19.2684 2.90783 18.8566 3.31842C18.4447 3.729 18.2388 4.23777 18.2388 4.84472C18.2388 5.45167 18.4439 5.96246 18.854 6.37709C19.2641 6.79173 19.7723 6.99905 20.3785 6.99905C20.9847 6.99905 21.4909 6.79259 21.897 6.37968C22.3031 5.96676 22.5061 5.45511 22.5061 4.84472C22.5061 4.23432 22.3002 3.72469 21.8884 3.31583C21.4766 2.90697 20.9713 2.70254 20.3725 2.70254ZM11.2874 4.84472C11.2874 5.45167 11.4933 5.96246 11.9051 6.37709C12.3169 6.79173 12.8222 6.99905 13.421 6.99905C14.0198 6.99905 14.5251 6.79259 14.937 6.37968C15.3488 5.96676 15.5547 5.45511 15.5547 4.84472C15.5547 4.23432 15.3508 3.72469 14.943 3.31583C14.5352 2.90697 14.0299 2.70254 13.4271 2.70254C12.8243 2.70254 12.3169 2.90783 11.9051 3.31842C11.4933 3.729 11.2874 4.23777 11.2874 4.84472ZM2.68416 9.70159V13.6862H15.6579V9.70159H2.68416ZM15.6579 33.2975V16.3888H5.5748V33.2975H15.6579ZM18.3421 33.2975H28.4252V16.3888H18.3421V33.2975ZM31.3158 13.6862V9.70159H18.3421V13.6862H31.3158Z" fill="#A47944"/>
+</svg>
+ </div>
+      <h2 class="unboxing-title">{{ section.settings.heading }}</h2>
+      <p class="unboxing-description">{{ section.settings.subtext }}</p>
+    </div>
+
+    <div class="unboxing-grid">
+      {% for block in section.blocks %}
+        <div class="unboxing-card">
+          <span class="card-label">{{ block.settings.label }}</span>
+          <div class="card-image-wrapper">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.label }}">
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Unboxing the Legacy",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Unboxing the Legacy"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Every order arrives in our signature champagne-toned velvet box, accompanied by a certificate of gold authenticity and a luxury polishing cloth."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Card Label",
+          "default": "SIGNATURE BOX"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Unboxing the Legacy",
+      "blocks": [
+        { "type": "card", "settings": { "label": "SIGNATURE BOX" } },
+        { "type": "card", "settings": { "label": "CERTIFIED AUTHENTIC" } },
+        { "type": "card", "settings": { "label": "GIFT MESSAGING" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

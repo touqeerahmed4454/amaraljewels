@@ -653,7 +653,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h5><strong>This week</strong><br/>Trending now</h5>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -679,9 +679,9 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "View all",
+                "label": "View all pieces",
                 "open_in_new_tab": false,
-                "style_class": "link",
+                "style_class": "button-secondary",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -700,19 +700,45 @@
           "name": "t:names.product_card",
           "static": true,
           "settings": {
-            "product_card_gap": 4,
+            "product_card_gap": 10,
             "inherit_color_scheme": true,
             "color_scheme": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0,
+            "border_radius": 5,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_T3FDaV": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h6>{{ closest.product.metafields.custom.sticker_label.value }}</h6>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "product_card_gallery_677WP3": {
               "type": "_product-card-gallery",
               "name": "t:names.product_card_media",
@@ -721,13 +747,17 @@
                 "border": "none",
                 "border_width": 1,
                 "border_opacity": 100,
-                "border_radius": 0,
+                "border_radius": 5,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "judge_me_reviews_preview_badge_FUpLV6": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "settings": {}
             },
             "product_title_YXxMTj": {
               "type": "product-title",
@@ -748,6 +778,32 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_CptMWJ": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>{{ closest.product.metafields.custom.material.value }}</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "0.75rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -776,18 +832,48 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "text_GWfe96": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h5>{{ closest.product.metafields.custom.payments_afterpay.value }}</h5>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h5",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
+            "text_T3FDaV",
             "product_card_gallery_677WP3",
+            "judge_me_reviews_preview_badge_FUpLV6",
             "product_title_YXxMTj",
-            "price_JQzVV4"
+            "text_CptMWJ",
+            "price_JQzVV4",
+            "text_GWfe96"
           ]
         }
       },
       "name": "Featured collection",
       "settings": {
-        "collection": "all",
+        "collection": "best-sellers",
         "section_class": "feat-cont-one",
         "layout_type": "grid",
         "carousel_on_mobile": true,
@@ -795,7 +881,7 @@
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 4,
+        "columns_gap": 20,
         "rows_gap": 24,
         "icons_style": "arrow",
         "icons_shape": "none",
@@ -855,7 +941,7 @@
         "button_link": "shopify://collections/bracelets-2",
         "bg_color": "#ffffff",
         "padding_top": 40,
-        "padding_bottom": 40
+        "padding_bottom": 64
       }
     },
     "section_BrdAcr": {
@@ -864,6 +950,7 @@
         "image_GkzRin": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Rectangle_27173_1.png",
             "link": "",
             "image_ratio": "square",
             "width": "fill",
@@ -921,15 +1008,15 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_xJaCPN": {
+            "text_wawrkh": {
               "type": "text",
-              "name": "t:names.heading",
+              "name": "t:names.text",
               "settings": {
-                "text": "<h2>Our signature product</h2>",
+                "text": "<h5>Since 1981</h5>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h3",
+                "type_preset": "h5",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -947,12 +1034,38 @@
               },
               "blocks": {}
             },
+            "text_xJaCPN": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<h3>Three generations. One workshop.</h3>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_qfpzkf": {
               "type": "text",
               "settings": {
-                "text": "<p>Made with care and unconditionally loved by our customers, this signature bestseller exceeds all expectations.</p>",
-                "width": "fit-content",
-                "max_width": "narrow",
+                "text": "<p>Our family has been making fine jewellery since 1981. What started in Spain as a single workshop has grown into the brand you see today, now proudly based in Australia. We make every piece by hand, in solid gold, the way our grandfather did. When you buy from Amaral, you're buying from us. Not from a catalogue, not from a dropshipper.</p>",
+                "width": "100%",
+                "max_width": "none",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -975,7 +1088,7 @@
             "button_DTzfy4": {
               "type": "button",
               "settings": {
-                "label": "Shop now",
+                "label": "Read our story",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
                 "style_class": "button",
@@ -988,6 +1101,7 @@
             }
           },
           "block_order": [
+            "text_wawrkh",
             "text_xJaCPN",
             "text_qfpzkf",
             "button_DTzfy4"
@@ -1007,11 +1121,11 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
+        "gap": 70,
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "",
+        "color_scheme": "scheme-827cb830-08ff-4024-bbc8-0954ed47f3c7",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -1023,9 +1137,9 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40,
-        "section_class": ""
+        "padding-block-start": 70,
+        "padding-block-end": 70,
+        "section_class": "img-text-one"
       }
     },
     "featured_product_information_iHqdW9": {
@@ -1196,6 +1310,40 @@
               },
               "blocks": {}
             },
+            "text_qBQJN9": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h6>{{ closest.product.metafields.custom.certificate_of_authenticity_included.value }}</h6>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "custom_liquid_hEeVJQ": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<div class=\"shipping-info-box\" style=\"background: #fff8f0; padding: 15px; border-radius: 4px; display: flex; align-items: flex-start; gap: 10px;\">\n  <span style=\"color: #9d7a54; font-size: 20px;\">🕒</span>\n  \n  <div>\n    <strong style=\"display: block; margin-bottom: 4px;\">Made to order. Ships in 2-3 weeks.</strong>\n    <p id=\"dynamic-shipping-text\" style=\"margin: 0; color: #444;\">\n      Ready to ship. Order before 2pm AEST today, get it by <span id=\"delivery-date\">...</span>.\n    </p>\n  </div>\n</div>\n\n<script>\n  function getShippingDate() {\n    const now = new Date();\n    \n    // AEST Timezone adjust karne ke liye (Optional, default browser time use karega)\n    const currentHour = now.getHours();\n    \n    let deliveryDate = new Date();\n    \n    // Agar dopahar ke 2 baje (14:00) ke baad order ho raha hai, toh 1 din mazeed add karein\n    let daysToAdd = 4;\n    if (currentHour >= 14) {\n      daysToAdd = 5;\n    }\n    \n    deliveryDate.setDate(now.getDate() + daysToAdd);\n\n    // Date formatting (e.g., Friday 9 May)\n    const options = { weekday: 'long', day: 'numeric', month: 'long' };\n    const formattedDate = deliveryDate.toLocaleDateString('en-AU', options);\n\n    document.getElementById('delivery-date').innerText = formattedDate;\n  }\n\n  // Function Run karein\n  getShippingDate();\n</script>"
+              },
+              "blocks": {}
+            },
             "variant_picker_wgT6ey": {
               "type": "variant-picker",
               "name": "t:names.product_variant_picker",
@@ -1233,7 +1381,7 @@
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button-secondary"
+                    "style_class": "button"
                   },
                   "blocks": {}
                 },
@@ -1247,11 +1395,27 @@
               },
               "block_order": []
             },
+            "custom_liquid_4AejpL": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<div class=\"trust-badges-container\">\n  <div class=\"badge-item\">\n   <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M4.54883 9.36279H12.1082\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4.54883 11.4375H12.1082\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4.54883 13.5127H12.1082\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4.54883 15.5874H12.1082\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M4.54883 18.6279H8.3382\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<mask id=\"mask0_84_2956\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"1\" y=\"1\" width=\"22\" height=\"22\">\n<path d=\"M21.5801 21.5796V2.41943H2.41992V21.5796H21.5801Z\" fill=\"white\" stroke=\"white\"/>\n</mask>\n<g mask=\"url(#mask0_84_2956)\">\n<path d=\"M9.29844 5.94325H8.78648C8.68924 5.94325 8.59598 5.90462 8.52721 5.83586C8.45845 5.7671 8.41982 5.67384 8.41982 5.57659V4.61844C8.41982 4.5212 8.45845 4.42794 8.52721 4.35918C8.59598 4.29041 8.68924 4.25178 8.78648 4.25178H14.8489C14.9462 4.25178 15.0394 4.29041 15.1082 4.35918C15.177 4.42794 15.2156 4.5212 15.2156 4.61844V5.57659C15.2156 5.67384 15.177 5.7671 15.1082 5.83586C15.0394 5.90462 14.9462 5.94325 14.8489 5.94325H10.6789M17.7188 7.3128V3.38152C17.7188 2.7377 17.1969 2.21578 16.553 2.21578H6.53455C6.22537 2.21579 5.92886 2.33862 5.71023 2.55724L2.66564 5.60183C2.55739 5.71008 2.47153 5.83859 2.41295 5.98002C2.35437 6.12145 2.32422 6.27303 2.32422 6.42611V20.6194C2.32422 21.2632 2.84613 21.7852 3.48992 21.7852H16.553C17.1969 21.7852 17.7188 21.2632 17.7188 20.6194V20.2218\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15.957 16.2907V19.2735C15.957 19.5328 16.2414 19.6917 16.4623 19.5557L17.5452 18.8891C17.5974 18.8569 17.6576 18.8399 17.7189 18.8399C17.7791 18.8399 17.8394 18.8563 17.8927 18.8891L18.9756 19.5557C19.1965 19.6917 19.4808 19.5328 19.4808 19.2735V16.2907\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.7181 14.9846C16.5144 14.9846 15.5385 14.0088 15.5385 12.805C15.5385 11.6013 16.5144 10.6255 17.7181 10.6255C18.9218 10.6255 19.8976 11.6013 19.8976 12.805C19.8976 14.0088 18.9218 14.9846 17.7181 14.9846ZM21.5184 13.3036C21.4183 13.1566 21.3648 12.9829 21.3648 12.805C21.3648 12.6272 21.4183 12.4535 21.5184 12.3065C21.8446 11.8278 21.6309 11.1702 21.0856 10.9746C20.9182 10.9145 20.7728 10.8055 20.6683 10.6616C20.5638 10.5177 20.505 10.3457 20.4996 10.1679C20.4821 9.58901 19.9226 9.1825 19.3666 9.34477C19.1959 9.39457 19.0141 9.39181 18.845 9.33684C18.6758 9.28188 18.5272 9.17727 18.4183 9.03662C18.2411 8.80761 17.9796 8.69307 17.7181 8.69307C17.4566 8.69307 17.1951 8.80761 17.0179 9.03662C16.909 9.17726 16.7604 9.28187 16.5912 9.33684C16.4221 9.3918 16.2403 9.39456 16.0696 9.34477C15.5136 9.1825 14.9541 9.58901 14.9366 10.1679C14.9312 10.3457 14.8724 10.5177 14.7679 10.6616C14.6634 10.8055 14.5179 10.9145 14.3505 10.9746C13.8054 11.1702 13.5916 11.8278 13.9177 12.3065C14.0179 12.4535 14.0714 12.6272 14.0714 12.805C14.0714 12.9829 14.0179 13.1566 13.9177 13.3036C13.5916 13.7822 13.8054 14.4399 14.3505 14.6355C14.5179 14.6955 14.6634 14.8046 14.7679 14.9485C14.8724 15.0924 14.9312 15.2644 14.9366 15.4421C14.9529 15.9817 15.44 16.3714 15.9562 16.2906C15.9939 16.2848 16.0318 16.2764 16.0696 16.2653C16.2403 16.2155 16.4221 16.2183 16.5912 16.2732C16.7604 16.3282 16.909 16.4328 17.0179 16.5734C17.3723 17.0315 18.0639 17.0315 18.4183 16.5734C18.5272 16.4328 18.6758 16.3282 18.845 16.2732C19.0141 16.2183 19.1959 16.2155 19.3666 16.2653C19.4038 16.2762 19.4417 16.2847 19.48 16.2906C19.9962 16.3714 20.4833 15.9817 20.4996 15.4421C20.505 15.2644 20.5637 15.0924 20.6683 14.9485C20.7728 14.8046 20.9182 14.6955 21.0856 14.6355C21.6309 14.4399 21.8446 13.7822 21.5184 13.3036Z\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.7186 10.6257C16.5149 10.6257 15.5391 11.6016 15.5391 12.8053C15.5391 14.0091 16.5149 14.9849 17.7186 14.9849C18.9224 14.9849 19.8982 14.0091 19.8982 12.8053C19.8982 11.6016 18.9224 10.6257 17.7186 10.6257Z\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M6.05242 2.32062V5.22063C6.05242 5.61982 5.72884 5.94336 5.32973 5.94336H2.42969\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</g>\n</svg>\n    <span>Certificate included</span>\n  </div>\n\n  <div class=\"badge-item\">\n  <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17.0673 17.3687H9.48047\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<mask id=\"mask0_84_2974\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"24\" height=\"24\">\n<path d=\"M23.5 23.5V0.5H0.5V23.5H23.5Z\" fill=\"white\" stroke=\"white\"/>\n</mask>\n<g mask=\"url(#mask0_84_2974)\">\n<path d=\"M21.6862 17.3687H23.2968V12.4785L19.2633 8.31088H15.9629V17.3243\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M23.2971 12.4785H15.9629\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M5.64469 15.6681C6.50428 14.8085 7.89787 14.8085 8.75747 15.6681C9.61701 16.5277 9.61701 17.9215 8.75747 18.7811C7.89787 19.6407 6.50428 19.6407 5.64469 18.7811C4.7851 17.9215 4.7851 16.5277 5.64469 15.6681Z\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M17.9142 15.6681C18.7738 14.8085 20.1674 14.8085 21.027 15.6681C21.8866 16.5277 21.8866 17.9215 21.027 18.7811C20.1674 19.6407 18.7738 19.6407 17.9142 18.7811C17.0546 17.9215 17.0546 16.5277 17.9142 15.6681Z\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M2.92383 4.57462V17.3613H4.90987\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M15.9834 8.31689V4.57427H2.92383\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.80238 4.57422H2.92383\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.80143 7.3877H1.6875\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n<path d=\"M7.2859 10.2007H0.703125\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</g>\n</svg>\n    <span>Free AU shipping</span>\n  </div>\n\n  <div class=\"badge-item\">\n   <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_84_2992)\">\n<mask id=\"mask0_84_2992\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"24\" height=\"24\">\n<path d=\"M0 6.86646e-05H23.9999V24H0V6.86646e-05Z\" fill=\"white\"/>\n</mask>\n<g mask=\"url(#mask0_84_2992)\">\n<path d=\"M5.70312 11.9984C5.70312 15.4839 8.52251 18.3096 12.0005 18.3096C15.4784 18.3096 18.2978 15.4839 18.2978 11.9984C18.2978 8.51287 15.4784 5.68725 12.0005 5.68725C8.52251 5.68725 5.70312 8.51287 5.70312 11.9984Z\" stroke=\"#A47944\" stroke-miterlimit=\"10\"/>\n<path d=\"M10.7539 14.4902H11.9999C12.6881 14.4902 13.246 13.9325 13.246 13.2444C13.246 12.5563 12.6881 11.9985 11.9999 11.9985C11.3118 11.9985 10.7539 11.4407 10.7539 10.7527C10.7539 10.0646 11.3118 9.50683 11.9999 9.50683H13.246\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n<path d=\"M12 8.35648V9.50684\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n<path d=\"M12 14.4903V15.6406\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n<path d=\"M19.9881 4.01158C15.5763 -0.399484 8.42361 -0.399484 4.01189 4.01158C0.866118 7.15688 -0.0365039 11.6956 1.30384 15.6406\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n<path d=\"M4.01367 19.9918C8.42535 24.4029 15.5771 24.3964 19.9889 19.9853C23.1346 16.84 24.0373 12.3013 22.6969 8.35621\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n<path d=\"M17.9902 4.44434L19.9593 4.03226C19.9864 4.02659 20.0059 4.00263 20.0059 3.97488V1.91206\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n<path d=\"M6.02915 19.6062L4.05019 19.9676C4.03695 19.97 4.02494 19.9769 4.01619 19.9871C4.00744 19.9973 4.00248 20.0103 4.00214 20.0237L3.94922 22.0859\" stroke=\"#A47944\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n</g>\n</g>\n<defs>\n<clipPath id=\"clip0_84_2992\">\n<rect width=\"24\" height=\"24\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>\n    <span>30-day returns</span>\n  </div>\n</div>"
+              },
+              "blocks": {}
+            },
+            "custom_liquid_X9wQCi": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<div class=\"delivery-timer-wrapper\">\n  Order in the next <span id=\"countdown-timer\" class=\"timer-highlight\">--h --m</span>, \n  get it by <span id=\"delivery-day-date\" class=\"date-highlight\">--day, --date</span>.\n</div>\n<script>\nfunction updateDeliveryInfo() {\n    const now = new Date();\n    \n    // 1. Countdown Logic (2:00 PM Cut-off)\n    let targetTime = new Date();\n    targetTime.setHours(14, 0, 0, 0); \n\n    if (now > targetTime) {\n        targetTime.setDate(now.getDate() + 1);\n    }\n\n    const diff = targetTime - now;\n    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);\n    const minutes = Math.floor((diff / (1000 * 60)) % 60);\n\n    // Timer display update\n    document.getElementById('countdown-timer').innerText = hours + \"h \" + minutes + \"m\";\n\n    // 2. Delivery Date Logic (4 Days gap)\n    let deliveryDate = new Date();\n    let daysToAdd = 4;\n\n    if (now.getHours() >= 14) {\n        daysToAdd = 5;\n    }\n    \n    deliveryDate.setDate(now.getDate() + daysToAdd);\n\n    // Date formatting\n    const options = { weekday: 'long', day: 'numeric', month: 'long' };\n    const formattedDate = deliveryDate.toLocaleDateString('en-AU', options);\n    \n    document.getElementById('delivery-day-date').innerText = formattedDate;\n}\n\n// Har minute update karne ke liye\nsetInterval(updateDeliveryInfo, 60000);\nupdateDeliveryInfo();\n</script>"
+              },
+              "blocks": {}
+            },
             "accordion_mrmYrK": {
               "type": "accordion",
               "name": "t:names.accordion",
               "settings": {
-                "icon": "caret",
+                "icon": "plus",
                 "dividers": true,
                 "type_preset": "h6",
                 "inherit_color_scheme": true,
@@ -1270,7 +1434,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Materials & craftsmanship",
-                    "open_by_default": true,
+                    "open_by_default": false,
                     "icon": "none",
                     "width": 20
                   },
@@ -1280,7 +1444,7 @@
                       "settings": {
                         "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "rte",
                         "font": "var(--font-body--family)",
@@ -1394,8 +1558,12 @@
           "block_order": [
             "group_3pwULn",
             "review_DJtEnp",
+            "text_qBQJN9",
+            "custom_liquid_hEeVJQ",
             "variant_picker_wgT6ey",
             "buy_buttons_kcUqCF",
+            "custom_liquid_4AejpL",
+            "custom_liquid_X9wQCi",
             "accordion_mrmYrK"
           ]
         }
@@ -1428,6 +1596,7 @@
       "block_order": [
         "judge_me_reviews_review_widget_homepage_8ratRC"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,

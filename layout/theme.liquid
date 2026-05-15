@@ -40,7 +40,24 @@
     {% # theme-check-enable RemoteAsset %}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }} 
+      {% if template == 'index' %} home{% endif %}
+  {% if template contains 'collection' and collection %}
+    collection-templete
+  {% endif %}
+  {% if template contains 'product' and product %}
+    product-templete
+  {% endif %}
+  {% if template contains 'page' and page %}
+    page-{{ page.handle }}
+  {% endif %}
+  {% if template contains 'blog' and blog %}
+    blog-{{ blog.handle }}
+  {% endif %}
+  {% if template contains 'article' and article %}
+    article-{{ article.handle }}
+  {% endif %}
+   ">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}

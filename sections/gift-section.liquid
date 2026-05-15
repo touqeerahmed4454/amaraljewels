@@ -1,0 +1,259 @@
+<style>
+  .gift-main-wrapper {
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .gift-container {
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+  }
+
+  .gift-content {
+    flex: 1;
+    padding: 60px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gift-image {
+    flex: 1;
+    line-height: 0;
+  }
+
+  .gift-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gift-title {
+font-family: var(--font-h4--family);
+font-weight: 500;
+font-style: Medium;
+font-size: 50px;
+line-height: 100%;
+letter-spacing: 0%;
+    margin: 0 0 20px 0;
+  }
+
+  .gift-text {
+  font-family: var(--font-paragraph--family);
+font-weight: 400;
+font-size: 18px;
+line-height: 30px;
+letter-spacing: 0px;
+vertical-align: middle;
+    margin-bottom: 25px;
+    max-width: 500px;
+  }
+
+  .gift-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+  }
+
+  .gift-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  font-family: var(--font-paragraph--family);
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0px;
+vertical-align: middle;
+
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .feature-icon {
+    font-size: 18px;
+    color: #a37e52;
+  }
+
+  .gift-btn {
+    display: inline-block;
+    background-color:#A47944;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 16px 35px;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: fit-content;
+    transition: 0.3s;
+    text-align: center;
+  }
+
+  .gift-btn:hover {
+    background-color: #A47944;
+  }
+.feature-icon {
+    width: 24px; /* Icon ki width control karne ke liye */
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-icon img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  /* MOBILE DESIGN (image_ee9c7d.png follow kiya gaya hai) */
+  @media (max-width: 767px) {
+    .gift-container {
+      flex-direction: column; /* Text upar, Image niche */
+    }
+
+    .gift-content {
+      padding: 40px 20px;
+      order: 1; /* Text first */
+    }
+
+    .gift-image {
+      width: 100%;
+      order: 2; /* Image second */
+    }
+
+    .gift-title {
+      font-size: 32px;
+    }
+
+    .gift-btn {
+      width: 100%; /* Mobile par full width button */
+      box-sizing: border-box;
+    }
+  }
+</style>
+<div class="gift-section-{{ section.id }} gift-main-wrapper" style="background-color: {{ section.settings.bg_color }};">
+  <div class="gift-container">
+    
+    <div class="gift-content">
+      <h2 class="gift-title">{{ section.settings.title }}</h2>
+      <p class="gift-text">{{ section.settings.description }}</p>
+
+ <ul class="gift-features">
+  {% if section.settings.feature_1 != blank %}
+    <li>
+      <span class="feature-icon">
+        {% if section.settings.icon_1 != blank %}
+          <img src="{{ section.settings.icon_1 | img_url: '40x' }}" alt="icon 1">
+        {% else %}
+          🎁
+        {% endif %}
+      </span>
+      {{ section.settings.feature_1 }}
+    </li>
+  {% endif %}
+
+  {% if section.settings.feature_2 != blank %}
+    <li>
+      <span class="feature-icon">
+        {% if section.settings.icon_2 != blank %}
+          <img src="{{ section.settings.icon_2 | img_url: '40x' }}" alt="icon 2">
+        {% else %}
+          📝
+        {% endif %}
+      </span>
+      {{ section.settings.feature_2 }}
+    </li>
+  {% endif %}
+</ul>
+
+      {% if section.settings.btn_text != blank %}
+        <a href="{{ section.settings.btn_link }}" class="button gift-btn">
+          {{ section.settings.btn_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="gift-image">
+      {% if section.settings.main_image != blank %}
+        <img src="{{ section.settings.main_image | img_url: '1000x' }}" alt="{{ section.settings.title }}">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Gift Section Responsive",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF5EF"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "A Gift for Eternity"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "All Amaral Jewels arrive in our signature midnight velvet box..."
+    },
+    { "type": "header", "content": "Feature 1" },
+    {
+      "type": "image_picker",
+      "id": "icon_1",
+      "label": "Icon 1 (Image/PNG)"
+    },
+    {
+      "type": "text",
+      "id": "feature_1",
+      "label": "Text 1",
+      "default": "SIGNATURE GIFT PACKAGING INCLUDED"
+    },
+    { "type": "header", "content": "Feature 2" },
+    {
+      "type": "image_picker",
+      "id": "icon_2",
+      "label": "Icon 2 (Image/PNG)"
+    },
+    {
+      "type": "text",
+      "id": "feature_2",
+      "label": "Text 2",
+      "default": "CUSTOM HANDWRITTEN NOTE OPTION"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "PERSONALIZE PACKAGING"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Section Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift Section Responsive"
+    }
+  ]
+}
+{% endschema %}

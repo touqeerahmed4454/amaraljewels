@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "section",
@@ -16,9 +17,9 @@
           "name": "Title",
           "settings": {
             "text": "<h1>{{ closest.collection.title }}</h1>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
             "type_preset": "h2",
             "font": "var(--font-primary--family)",
             "font_size": "",
@@ -42,9 +43,9 @@
           "name": "Description",
           "settings": {
             "text": "{{ closest.collection.description }}",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "center",
             "type_preset": "rte",
             "font": "var(--font-primary--family)",
             "font_size": "",
@@ -62,11 +63,20 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "custom_liquid_gcNPMd": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"amaral-trust-section\">\n  <div class=\"amaral-container\">\n    <div class=\"amaral-badges-flex\">\n      \n      <div class=\"amaral-badge\">\n        <div class=\"amaral-icon\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0604/6888/7635/files/Container_4.png?v=1778870952\" alt=\"Certified Solid Gold\">\n        </div>\n        <span>CERTIFIED SOLID GOLD</span>\n      </div>\n\n      <div class=\"amaral-badge\">\n        <div class=\"amaral-icon\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0604/6888/7635/files/Container_3.png?v=1778870951\" alt=\"Lifetime Quality\">\n        </div>\n        <span>LIFETIME QUALITY</span>\n      </div>\n\n      <div class=\"amaral-badge\">\n        <div class=\"amaral-icon\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0604/6888/7635/files/Container_4.png?v=1778870952\" alt=\"30 Day Returns\">\n        </div>\n        <span>30 DAY RETURNS</span>\n      </div>\n\n    </div>\n  </div>\n</div>"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_tqQTNE",
-        "text_twGGkJ"
+        "text_twGGkJ",
+        "custom_liquid_gcNPMd"
       ],
       "name": "Collection heading",
       "settings": {
@@ -81,7 +91,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-7ab311a8-ac84-47dc-b39d-a061a2d1bf37",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -93,8 +103,9 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 63,
+        "padding-block-end": 63,
+        "section_class": "collection-cont"
       }
     },
     "main": {
@@ -114,8 +125,8 @@
             "enable_grid_density": true,
             "inherit_color_scheme": true,
             "color_scheme": "",
-            "padding-block-start": 8,
-            "padding-block-end": 8,
+            "padding-block-start": 25,
+            "padding-block-end": 25,
             "padding-inline-start": 0,
             "padding-inline-end": 0,
             "facets_margin_bottom": 8,
@@ -140,6 +151,32 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_WcUFEx": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<h6>{{ closest.product.metafields.custom.sticker_label.value }}</h6>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h6",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "card-gallery": {
               "type": "_product-card-gallery",
               "settings": {
@@ -201,19 +238,27 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "judge_me_reviews_preview_badge_zcR3cy": {
+              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+              "settings": {}
             }
           },
           "block_order": [
+            "text_WcUFEx",
             "card-gallery",
             "product_title_4nY4eT",
-            "price_EzJzMm"
+            "price_EzJzMm",
+            "judge_me_reviews_preview_badge_zcR3cy"
           ]
         }
       },
       "settings": {
         "layout_type": "grid",
-        "product_card_size": "medium",
+        "product_card_size": "large",
         "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
         "product_grid_width": "centered",
         "full_width_on_mobile": true,
         "columns_gap_horizontal": 16,
@@ -221,13 +266,85 @@
         "padding-inline-start": 0,
         "padding-inline-end": 0,
         "color_scheme": "scheme-1",
-        "padding-block-start": 0,
-        "padding-block-end": 32
+        "padding-block-start": 21,
+        "padding-block-end": 68
+      }
+    },
+    "complete_the_look_W9zHzr": {
+      "type": "complete-the-look",
+      "blocks": {
+        "product_3R86ze": {
+          "type": "product",
+          "settings": {
+            "product_item": "lr-68-in-solid-18ct-gold",
+            "pairing_text": "Pairs perfectly with: The Heirloom Chain"
+          }
+        },
+        "product_m8AQEe": {
+          "type": "product",
+          "settings": {
+            "product_item": "lr-124-in-solid-18ct-gold",
+            "pairing_text": "Pairs perfectly with: The Heirloom Chain"
+          }
+        }
+      },
+      "block_order": [
+        "product_3R86ze",
+        "product_m8AQEe"
+      ],
+      "name": "Complete the Look Bundle",
+      "settings": {
+        "bg_color": "#fafafa",
+        "main_image": "shopify://shop_images/Container_1.png",
+        "badge_title": "",
+        "badge_year": "",
+        "sub_title": "STYLING GUIDE",
+        "title": "Complete the Look",
+        "description": "Our designers have curated the perfect pairings for your\nsignature gold pieces. Discover how to layer textures and lengths\nfor a timeless, modern aesthetic."
+      }
+    },
+    "unboxing_legacy_mkJYRP": {
+      "type": "unboxing-legacy",
+      "blocks": {
+        "card_cpQLPc": {
+          "type": "card",
+          "settings": {
+            "label": "SIGNATURE BOX",
+            "image": "shopify://shop_images/AB6AXuCOoECDu5oIXS-RzqBmXUDOTROYBuVs9HpKDuZkQaJP4oMBmTbq3q1DvgzjJfC_t3FairhLFr5z3VNHE1b3fFmDi79jAgNK9fkQ9M67YbZTlljfh3wVgDVjl19icU21oUb6EjB-Ep9mJ316ewFhND4y_Evp5bCISQuor4_y0d94zZv6yEh.png"
+          }
+        },
+        "card_VgXfHB": {
+          "type": "card",
+          "settings": {
+            "label": "CERTIFIED AUTHENTIC",
+            "image": "shopify://shop_images/AB6AXuCiuCM5lywQxgbyhriatlUWp1dVd-xkXJ0FnFrvXmk8gPCVEW3YyxHCbroxv9AGVY2DRs5oOXyJEn9hOVwQVpfmLuVDOQVsh6R7IGbUVMyO5muBIGvxNge12gNbZnlc8G5NFqOFxkNxDPhvJMjYq7bJRy933VB3f1-M9IH_-sOTwzlVyk.png"
+          }
+        },
+        "card_m3TQtB": {
+          "type": "card",
+          "settings": {
+            "label": "GIFT MESSAGING",
+            "image": "shopify://shop_images/AB6AXuCU6EZ6ZJd7mi3lPzXp02HVRns81FaontINk9HuL90BuBNp4Tjv4qXLSr6rF_Gh8Oiw9qBm2PBWDcl9Wjp67-NbImxw9WXg_PjrRiR7usklfOWy39RHee9iObVTblX05_adu4n6U-UaarcCJXjfFHorIEo1SZfQ0JyeE8TRrpnOtR8VEWs.png"
+          }
+        }
+      },
+      "block_order": [
+        "card_cpQLPc",
+        "card_VgXfHB",
+        "card_m3TQtB"
+      ],
+      "name": "Unboxing the Legacy",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Unboxing the Legacy",
+        "subtext": "Every order arrives in our signature champagne-toned velvet box, accompanied by a certificate of gold authenticity and a luxury polishing cloth."
       }
     }
   },
   "order": [
     "section",
-    "main"
+    "main",
+    "complete_the_look_W9zHzr",
+    "unboxing_legacy_mkJYRP"
   ]
 }

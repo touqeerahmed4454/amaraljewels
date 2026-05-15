@@ -1,0 +1,150 @@
+<style>
+  .trust-section-wrapper {
+    padding: 50px 3rem;
+    width: 100%;
+  }
+
+  .trust-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .badges-grid {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Desktop par ek line mein rahega agar space ho */
+  }
+
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .badge-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .badge-icon img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .badge-text {
+
+      font-family: var(--font-paragraph--family);
+font-weight: 600;
+
+font-size: 16px;
+line-height: normal;
+letter-spacing: 0px;
+vertical-align: middle;
+    margin-top: 0px;
+
+    max-width: 280px;
+    color:#000;
+  }
+
+  /* MOBILE DESIGN (image_ee195d.png follow kiya gaya hai) */
+  @media (max-width: 767px) {
+    .trust-section-wrapper {
+      padding: 40px 15px;
+    }
+
+    .badges-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 2 badges ek line mein */
+      gap: 25px 15px;
+      justify-items: center;
+    }
+
+    /* Last badge ko center karne ke liye agar odd number ho */
+    .badge-item:last-child:nth-child(odd) {
+      grid-column: 1 / span 2;
+    }
+
+    .badge-icon {
+      width: 35px;
+      height: 35px;
+      margin-bottom: 10px;
+    }
+
+    .badge-text {
+      font-size: 12px;
+    }
+  }
+</style>
+<div class="trust-badges-{{ section.id }} trust-section-wrapper" style="background-color: {{ section.settings.bg_color }};">
+  <div class="trust-container">
+    <div class="badges-grid">
+      {% for block in section.blocks %}
+        <div class="badge-item">
+          <div class="badge-icon">
+            {% if block.settings.custom_icon != blank %}
+              <img src="{{ block.settings.custom_icon | img_url: '60x' }}" alt="{{ block.settings.badge_text }}">
+            {% else %}
+              <span class="default-emoji">✨</span>
+            {% endif %}
+          </div>
+          <p class="badge-text">{{ block.settings.badge_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust Badges Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF5EF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge Text",
+          "default": "30-day bespoke returns"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges Section",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" }
+      ]
+    }
+  ]
+}
+{% endschema %}
