@@ -52,7 +52,10 @@
         <div class="footer-menu-item">
           <div class="footer-title mobile-toggle">
             {{ section.settings.quick_title }}
-            <span class="footer-arrow">+</span>
+            <span class="footer-arrow"><svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.353516 0.353516L7.35352 7.35352L14.3535 0.353516" stroke="white"/>
+</svg>
+</span>
           </div>
 
           <ul class="footer-links">
@@ -68,7 +71,10 @@
         <div class="footer-menu-item">
           <div class="footer-title mobile-toggle">
             {{ section.settings.policy_title }}
-            <span class="footer-arrow">+</span>
+            <span class="footer-arrow"><svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.353516 0.353516L7.35352 7.35352L14.3535 0.353516" stroke="white"/>
+</svg>
+</span>
           </div>
 
           <ul class="footer-links">
@@ -84,7 +90,10 @@
         <div class="footer-menu-item">
           <div class="footer-title mobile-toggle">
             {{ section.settings.contact_title }}
-            <span class="footer-arrow">+</span>
+            <span class="footer-arrow"><svg width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.353516 0.353516L7.35352 7.35352L14.3535 0.353516" stroke="white"/>
+</svg>
+</span>
           </div>
 
           <ul class="footer-links contact-list">
@@ -272,9 +281,20 @@ line-height: normal;
 }
 
 @media screen and (max-width:768px){
+.footer-title {
+    margin-top: 0px;
+    padding: 15px 0px;
+}
 
+  .custom-footer__left {
+    max-width: 100%;
+    width: 100%;
+}
   .custom-footer{
-    padding:35px 0 20px;
+    padding:130px 0 20px;
+  }
+  .shopify-section-group-footer-group.section-wrapper{
+      margin:0px auto -91px;
   }
 
   .custom-footer .page-width{
@@ -283,9 +303,12 @@ line-height: normal;
 
   .custom-footer__wrapper{
     flex-direction:column;
-    gap:30px;
+    gap:20px;
   }
-
+.custom-footer__bottom {
+    border-top: 0px solid #fff;
+    padding-top: 0px;
+  }
   .custom-footer__menus{
     flex-direction:column;
     gap:0;
@@ -324,7 +347,7 @@ line-height: normal;
   }
 
   .footer-menu-item.active .footer-arrow{
-    transform:rotate(45deg);
+    transform:rotate(180deg);
   }
 
   .custom-footer__bottom{

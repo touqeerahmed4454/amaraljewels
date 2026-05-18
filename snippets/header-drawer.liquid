@@ -60,7 +60,13 @@
       on:click="/toggle"
     >
       <span class="svg-wrapper header-drawer-icon header-drawer-icon--open">
-        {{- 'icon-menu.svg' | inline_asset_content -}}
+        <svg width="25" height="18" viewBox="0 0 25 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.900391 0.899902H23.9004" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M0.900391 8.8999H23.9004" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M0.900391 16.8999H23.9004" stroke="black" stroke-width="1.8" stroke-linecap="round"/>
+</svg>
+
+        {% comment %} {{- 'icon-menu.svg' | inline_asset_content -}} {% endcomment %}
       </span>
       <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
         {{- 'icon-close.svg' | inline_asset_content -}}
@@ -779,7 +785,7 @@
 
   .header__icon--summary .header-drawer-icon {
     margin: auto;
-    width: var(--icon-size-xs);
+    width:18px;
     height: var(--icon-size-xs);
   }
 

@@ -151,5 +151,183 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+  const targetMedia = document.querySelector(".product-templete .product-information__grid");
+  const topHeading = document.querySelector(".product-templete .mobile-top-heading");
+  const mobileQuery = window.matchMedia("(max-width: 749px)");
+
+  if (!targetMedia) return;
+
+  function moveElements() {
+    if (mobileQuery.matches) {
+      // 1. Heading ko shift karein
+      if (topHeading && topHeading.previousElementSibling !== targetMedia) {
+        targetMedia.parentNode.insertBefore(topHeading, targetMedia);
+      }
+
+      // 2. Review widget ko dhoondein aur shift karein
+      const reviewWidget = document.querySelector(".product-templete .shopify-app-block.jdgm-horizon-widget");
+      if (reviewWidget) {
+        // Isko heading ke bilkul baad aur media ke uper insert karein
+        targetMedia.parentNode.insertBefore(reviewWidget, targetMedia);
+      }
+    }
+  }
+
+  // Page load par pehli dafa run karein
+  moveElements();
+
+  // Screen resize hone par run karein
+  mobileQuery.addEventListener("change", moveElements);
+
+  // MutationObserver: Jo dynamically load hone wale review widget ko track karega
+  const observer = new MutationObserver(function (mutations, obs) {
+    const reviewWidget = document.querySelector(".product-templete .shopify-app-block.jdgm-horizon-widget");
+    if (reviewWidget && mobileQuery.matches) {
+      targetMedia.parentNode.insertBefore(reviewWidget, targetMedia);
+      // Agar widget mil jaye aur shift ho jaye toh observer ko stop kar dein taake performance par asar na pare
+      obs.disconnect();
+    }
+  });
+
+  // Poore document par nazar rakhein ke kab widget inject hota hai
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+});
+  </script>
+    
+<div class="size-modal" id="sizeGuideModal" aria-hidden="true">
+  <div class="size-modal__content">
+    <button type="button" class="size-modal__close" id="closeSizeGuide">&times;</button>
+    <img src="{{ product.metafields.custom.size_guide_image | image_url: width: 800 }}" alt="Size Guide" class="size-modal__img" loading="lazy">
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("sizeGuideModal");
+    const openBtn = document.getElementById("openSizeGuide");
+    const closeBtn = document.getElementById("closeSizeGuide");
+
+    if (openBtn && modal) {
+      openBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        modal.classList.add("is-open");
+        document.body.style.overflow = "hidden"; // Background scroll lock
+      });
+
+      closeBtn.addEventListener("click", function () {
+        modal.classList.remove("is-open");
+        document.body.style.overflow = ""; // Scroll unlock
+      });
+
+      // Agar modal ke baahir click ho toh band ho jaye
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          modal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        }
+      });
+    }
+  });
+</script>
+<style>
+  /* Button Styling - Image se 100% match */
+  .size-guide-trigger-wrapper {
+    margin: 15px 0;
+    display: inline-block;
+  }
+  .size-guide-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #121212;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .size-guide-trigger span {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .size-guide-trigger svg {
+    width: 16px;
+    height: 16px;
+    color: #444;
+  }
+
+  /* Popup/Modal Layout */
+  .size-modal {
+    display: none; 
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .size-modal.is-open {
+    display: flex;
+    opacity: 1;
+  }
+  .size-modal__content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    animation: slideUp 0.3s ease;
+  }
+  .size-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    line-height: 1;
+  }
+  .size-modal__img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .size-chart-cont{
+    width: 100%;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+    margin-top: -30px;
+    display: block;
+    position: relative;
+  }
+    .size-chart-cont .size-guide-trigger-wrapper{
+    position: absolute;
+  right: 0;
+  top:45px;
+}
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
+
   </body>
 </html>

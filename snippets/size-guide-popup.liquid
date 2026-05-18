@@ -1,0 +1,150 @@
+{%- comment -%}
+  Automated fallback: Agar section ke context mein product block ke andar hai ya direct template mein.
+{%- endcomment -%}
+{%- assign dynamic_product = block.settings.product | default: section.settings.product | default: product -%}
+
+{%- if dynamic_product.metafields.custom.size_guide_image != blank -%}
+<style>
+  .size-guide-trigger-wrapper-{{ section.id }} {
+    margin: 15px 0;
+    display: inline-block;
+    width: 100%;
+  }
+  .size-guide-trigger-{{ section.id }} {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #121212;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .size-guide-trigger-{{ section.id }} span {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .size-guide-trigger-{{ section.id }} svg {
+    width: 16px;
+    height: 16px;
+    color: #444;
+  }
+
+  /* Modal unique to this section instance */
+  .size-modal-{{ section.id }} {
+    display: none; 
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .size-modal-{{ section.id }}.is-open {
+    display: flex;
+    opacity: 1;
+  }
+  .size-modal-content-{{ section.id }} {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    animation: sizeModalSlideUp-{{ section.id }} 0.3s ease;
+  }
+  .size-modal-close-{{ section.id }} {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    line-height: 1;
+  }
+  .size-modal-img-{{ section.id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  @keyframes sizeModalSlideUp-{{ section.id }} {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
+
+<div class="size-guide-trigger-wrapper-{{ section.id }}">
+  <button type="button" class="size-guide-trigger-{{ section.id }}" id="openBtn-{{ section.id }}">
+    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M2.25 12l8.954 8.955c.44.439 1.152.439 1.591 0L21.75 12M2.25 12h19.5M7.5 12v-1.5M10.5 12v-3M13.5 12v-1.5M16.5 12v-3M19.5 12v-1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span>Help about your size</span>
+  </button>
+
+  <div class="size-modal-{{ section.id }}" id="modal-{{ section.id }}" aria-hidden="true">
+    <div class="size-modal-content-{{ section.id }}">
+      <button type="button" class="size-modal-close-{{ section.id }}" id="closeBtn-{{ section.id }}">&times;</button>
+      <img src="{{ dynamic_product.metafields.custom.size_guide_image | image_url: width: 800 }}" alt="{{ dynamic_product.title }} Size Guide" class="size-modal-img-{{ section.id }}" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const initSizeGuide = () => {
+      const openBtn = document.getElementById("openBtn-{{ section.id }}");
+      const modal = document.getElementById("modal-{{ section.id }}");
+      const closeBtn = document.getElementById("closeBtn-{{ section.id }}");
+
+      if (openBtn && modal) {
+        openBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          modal.classList.add("is-open");
+          document.body.style.overflow = "hidden";
+        });
+
+        const handleClose = () => {
+          modal.classList.remove("is-open");
+          document.body.style.overflow = "";
+        };
+
+        if (closeBtn) closeBtn.addEventListener("click", handleClose);
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) handleClose();
+        });
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initSizeGuide);
+    } else {
+      initSizeGuide();
+    }
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Size Guide Dynamic",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Size Guide Dynamic"
+    }
+  ]
+}
+{% endschema %}

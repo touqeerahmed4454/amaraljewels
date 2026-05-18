@@ -1,4 +1,4 @@
-{%- style -%}
+<style>
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -111,14 +111,33 @@ text-transform: uppercase;
     }
 
     .custom-hero__content-wrapper {
-      padding: 60px 3rem;
+      padding: 60px 2.8rem;
     }
 
     .custom-hero__heading {
       font-size: 56px;
     }
+
+   .custom-hero__subheading{
+    letter-spacing: 0.5px;
+   }
   }
-{%- endstyle -%}
+    @media (max-width: 768px) {
+   .custom-hero__content-wrapper{
+        padding: 40px 15px;
+   }
+   .custom-hero__subheading{
+    letter-spacing: 0.5px;
+   }
+   .custom-hero__heading {
+   font-size: 40px !important;
+       margin-bottom: 10px;
+  }
+  .custom-hero__text{
+    font-size: 16px;
+  }
+  }
+</style>
 
 <div class="custom-hero--{{ section.id }} section-{{ section.id }}-padding">
   {%- if section.settings.image != blank -%}
@@ -259,12 +278,7 @@ text-transform: uppercase;
       "label": "Padding Bottom",
       "default": 36
     },
-    {
-      "type": "text",
-      "id": "custom_class",
-      "label": "Custom CSS class",
-      "default": ""
-    }],
+  ],
   "presets": [
     {
       "name": "Custom Hero Section"

@@ -76,8 +76,12 @@ vertical-align: middle;
       padding: 50px 15px;
     }
     .unboxing-title {
-      font-size: 32px;
+      font-size: 36px;
     }
+    .unboxing-description{
+    font-size: 16px;
+    padding-bottom:25px;
+  }
     .unboxing-grid {
       grid-template-columns: 1fr; /* Stacked layout */
       gap: 20px;
@@ -85,6 +89,9 @@ vertical-align: middle;
     .unboxing-card {
       padding: 20px 10px;
     }
+    .card-label{
+    padding-top: 10px;
+  }
   }
 </style>
 <div class="unboxing-section-{{ section.id }} unboxing-wrapper" style="background-color: {{ section.settings.bg_color }};">
